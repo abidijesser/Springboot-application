@@ -15,17 +15,17 @@ import org.apache.logging.log4j.*;
 public class LoggingAspect {
 
     private static final Logger l = LogManager.getLogger(LoggingAspect.class);
-    @After("execution( * org.example.abidijasser.service.serviceExamImpl.add*() )")
+    @After("execution(* org.example.abidijasser.service.serviceExamImpl.add*(..))")
     public void logAfter(JoinPoint joinPoint) {
-        l.info("méthode executé");
+        l.info("méthode executé after");
     }
 
-    @Before("execution( * org.example.abidijasser.service.serviceExamImpl.add*() )")
+    @Before("execution(* org.example.abidijasser.service.serviceExamImpl.add*(..))")
     public void logBefore(JoinPoint joinPoint) {
-        l.info("méthode executé");
+        l.info("méthode executé before");
     }
 
-    @Around("execution( * org.example.abidijasser.service.serviceExamImpl.add*() )")
+    @Around("execution(* org.example.abidijasser.service.serviceExamImpl.add*(..))")
     public Object logArround(ProceedingJoinPoint joinPoint) throws Throwable {
         long startTime = System.currentTimeMillis();
         Object obj = joinPoint.proceed();
